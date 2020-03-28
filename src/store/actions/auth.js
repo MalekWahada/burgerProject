@@ -1,8 +1,9 @@
 import * as actiontypes from './actionsTypes';
 import axios from '../../axios-orders';
 
-
-
+// .env sigin and signup urls
+const SIGN_IN_URL = process.env.REACT_FIREBASE_SIGN_IN_URL;
+const SIGN_UP_URL = process.env.REACT_FIREBASE_SIGN_UP_URL;
 
 
 export const authStart = () => {
@@ -56,9 +57,9 @@ export const auth = (email, password, isSignUp) => {
         };
 
         //  a link for Sign UP and the other for Sign IN 
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDD5qsDvCOlljPMG6TYPibokHLPsbn6EHU';
+        let url = SIGN_UP_URL;
         if (!isSignUp) {
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDD5qsDvCOlljPMG6TYPibokHLPsbn6EHU'
+            url = SIGN_IN_URL;
         }
         axios.post(url, authData)
             .then(res => {

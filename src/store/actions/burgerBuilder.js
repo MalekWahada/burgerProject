@@ -1,6 +1,8 @@
 import * as actionTypes from './actionsTypes';
 import Axios from '../../axios-orders';
 
+// .env orders url
+const ORDERS_URL = process.env.REACT_FIREBASE_ORDERS_URL;
 
 export const addIngredient = (name) => {
     return{
@@ -32,7 +34,7 @@ export const fetchIngredientsFailed = (ingredients) => {
 
 export const initIngredients = () =>{
     return dispatch => {
-        Axios.get('https://burgerproject-a6359.firebaseio.com/ingredients.json')
+        Axios.get(ORDERS_URL)
             .then(res => {
                 dispatch(setIngredients(res.data));
             })
